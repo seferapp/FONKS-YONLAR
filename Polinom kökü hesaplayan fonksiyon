@@ -1,0 +1,71 @@
+#include <stdlib.h>
+#include <math.h>
+#define MAXDEGREE 50
+float newton_raphson(float x, const float a[], int n);
+int main(void)
+{
+
+    //kaynak https://www.geeksforgeeks.org/program-for-newton-raphson-method/
+    float a[MAXDEGREE];
+
+    int n, i;
+
+    float xi, xj, error;
+
+    printf("Polinomun derecesi \n");
+
+    scanf("%d",&n);
+
+    for (i = n; i >= 0; i--)
+    {
+        printf("a %d  :\n",i);
+        scanf("%f",&a[i]);
+    }
+
+    printf("Hata miktari :\n");
+
+    scanf("%f",&error);
+
+    printf("x0 :\n");
+
+    scanf("%f",&xi);
+
+    while (1)
+    {
+        xj = newton_raphson(xi, a, n);
+        if (fabs(xj - xi) < error)
+            break;
+        xi = xj;
+    }
+
+
+
+
+    printf("Kok = %d ",xj);
+
+
+
+
+    return EXIT_SUCCESS;
+}
+float newton_raphson(float x, const float a[], int n)
+{
+    float b[MAXDEGREE], c[MAXDEGREE];
+
+    float xn;
+
+    int i;
+
+    b[n] = a[n];
+    c[n] = b[n];
+    for (i = n - 1; i > 0; i--)
+    {
+        b[i] = b[i+1] * x + a[i];
+        c[i] = c[i+1] * x + b[i];
+    }
+
+    b[0] = b[1] * x + a[0];
+
+    xn = x - b[0] / c[1];
+    return xn;
+}
