@@ -1,0 +1,75 @@
+
+#include <stdlib.h> 
+int combin(int a, int b);
+int fact(int x);
+int main(void)
+{
+    int n, r;
+    printf("birinci sayi giriniz \n");
+    scanf("%d",&n);
+    printf("ikinci sayi giriniz \n");
+    scanf("%d",&r);
+    int sonuc= combin_yavas(n, r);
+    printf("%d\n",sonuc);
+    sonuc= combin_hizli(n, r);
+    // printf("%d",sonuc);
+    return EXIT_SUCCESS;
+}
+int combin_yavas(int a, int b)
+{
+    int f1, f2, f3;
+    f1 = fact(a);
+
+    f2 = fact(b);
+    f3 = fact(a - b);
+    printf("%d    %d   %d\n",f1,f2,f3);
+    return f1 / (f2 * f3);
+}
+int fact(int x)
+{
+    int fx = 1;
+    int i;
+    for (i = 2; i <= x; i++)
+        fx = fx * i;
+    return fx;
+}
+
+
+int combin_hizli(int a, int b)
+{
+    int f1 = 1, f2=1, f3=1;
+    int first = b, second = a - b;
+    int i;
+    if (b > a - b)
+    {
+        first = a - b;
+        second = b;
+    }
+
+    for (i = 2; i <= first; i++)
+    {
+        f3 = f3 * i;
+    }
+
+    f2 = f3;
+
+    for (i = first + 1; i <= second; i++)
+    {
+        f2 = f2 * i;
+    }
+
+    f1 = f2;
+
+    for (i = second + 1; i <= a; i++)
+    {
+        f1 = f1 * i;
+    }
+
+    printf("%d    %d   %d\n",f1,f2,f3);
+
+    return f1 / (f2 * f3);
+}
+
+
+
+
