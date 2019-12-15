@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void sayac(char eski,char yeni );
+char dizi[50];
+int main()
+{
+    
+    char eski;
+    char yeni;
+   
+    printf("metini karakteri giriniz\n");
+    scanf("%s",dizi);
+    
+    printf("\n eski karakteri giriniz\n");
+    
+    scanf("%s",eski);
+      printf("\n yeni karakteri giriniz\n");
+
+    scanf("%s",yeni);
+   sayac(eski,yeni);
+   printf("%s",dizi);
+
+    return 0;
+}
+void sayac(char eski,char yeni )
+{
+  
+    int i=0;
+    for(i=0;dizi[i]!='\0';i++)
+    {
+        if(dizi[i]==eski)
+        {
+          dizi[i]=yeni;
+        }
+        
+    }
+}
