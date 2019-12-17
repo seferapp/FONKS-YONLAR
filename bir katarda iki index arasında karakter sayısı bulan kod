@@ -8,6 +8,7 @@ int main()
    
     printf("metin giriniz\n");
     scanf("%s",dizi);
+    fgets(dizi,"max karakter",stdin)
     
     printf("\naradiginiz karakteri giriniz\n");
     
