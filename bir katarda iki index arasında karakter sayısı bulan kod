@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 
 int sayac(char dizi[],char arana_ );
 int main()
@@ -7,21 +9,15 @@ int main()
     char aranan;
    
     printf("metin giriniz\n");
-    scanf("%s",dizi);
-    fgets(dizi,"max karakter",stdin)
+  
+    fgets(dizi,50,stdin);
     
-    printf("\naradiginiz karakteri giriniz\n");
-    
-    scanf("%c",&aranan);
-    
+    printf("\n aradiginiz karakteri giriniz \n");
+   scanf("%c",&aranan);
    int sonuc=sayac(dizi,aranan);
    printf("%d",sonuc);
-
     return 0;
 }
-
-
-
 
 int sayac(char dizi[],char arana_ )
 {
@@ -43,7 +39,9 @@ int sayac(char dizi[],char arana_ )
         }
         
     }
-    for(int j=start+1;j<son;j++)
+    start++;
+    int j=0;
+    for(j=start;j<son;j++)
     {
         if(dizi[j]!=" ")
         {
