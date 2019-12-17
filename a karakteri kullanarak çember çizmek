@@ -1,0 +1,39 @@
+#include <conio.h>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdlib.h>
+#include <windows.h>
+
+void gotoxy(int x, int y)
+{
+    HANDLE hConsoleOutput;
+    COORD Cursor_Pos = {x-1, y-1};
+
+    hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(hConsoleOutput, Cursor_Pos);
+}
+
+int main()
+{
+    
+    int x=0;
+    int y=0;
+    int r=0;
+   
+    printf("x giriniz \n");
+    scanf("%d",&x);
+    printf("y'yi giriniz\n");
+    scanf("%d",&y);
+    printf("r'yi giriniz\n");
+    scanf("%d",&r);
+    int t=0;
+    for(t=0;t <= 360; t++){
+        int x_ = (int)(cos(t)*r);
+        int y_ = (int)(sin(t)*r);
+		gotoxy(x_+x,y_+y);
+	printf("*");
+    }
+    return 0;
+}
