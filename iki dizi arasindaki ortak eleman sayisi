@@ -1,3 +1,10 @@
+#include <conio.h>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdlib.h>
+#include <windows.h>
 #include <stdio.h>
 
 int sayac_m( );
@@ -17,17 +24,20 @@ printf("%d",sonuc);
 int sayac_m( )
 {
   
-  size_t dizi1_uzunlugu = sizeof(dizi1)/sizeof(dizi1[0]);
-  size_t dizi2_uzunlugu = sizeof(dizi2)/sizeof(diz2[0]);
+  int dizi1_uzunlugu = sizeof(dizi1)/sizeof(dizi1[0]);
+  int dizi2_uzunlugu = sizeof(dizi2)/sizeof(dizi2[0]);
   int sayac=0;
+  int i=0;
+  int k=0;
+  int j=0;
   
-  for(int i=0;i<dizi1_uzunlugu;i++)
+  for(i=0;i<dizi1_uzunlugu;i++)
   {
       
      int control=0;
      if(i>0)
      {
-         for(int k=0;k<i;k++)
+         for(k=0;k<i;k++)
          {
              if(dizi1[i]==dizi1[k])
              {
@@ -37,7 +47,7 @@ int sayac_m( )
             
          }
      }
-      for(int j=0;j<dizi2_uzunlugu;j++)
+      for( j=0;j<dizi2_uzunlugu;j++)
       {
           if(control==1)
           break;
@@ -52,3 +62,5 @@ int sayac_m( )
   }
   return sayac;
 }
+
+
