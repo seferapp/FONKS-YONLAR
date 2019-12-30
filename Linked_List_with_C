@@ -11,7 +11,7 @@ node createNode()
 {
 	node temp;
 	temp=(node)malloc(sizeof(struct LinkedList));
-	temp->next=NULL;
+	temp->next=NULL;   //a->b is just short for (*a).b
 	return temp;
 }
 node addNode(node head,int data)
