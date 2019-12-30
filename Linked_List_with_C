@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef struct LinkedList *node;
+struct LinkedList{
+	int Data;
+	struct LinkedList *next;
+};
+node createNode()
+{
+	node temp;
+	temp=(node)malloc(sizeof(struct LinkedList));
+	temp->next=NULL;
+	return temp;
+}
+node addNode(node head,int data)
+{
+	node temp,p;
+	temp=createNode();
+	temp->Data=data;
+	if(head==NULL)
+	{
+		head=temp;
+	}else{
+		p=head;
+		while(p->next!=NULL)
+		{
+			p=p->next;
+		}
+		p->next=temp;
+	}
+	return head;
+}
+int main(int argc, char *argv[]) {
+node mylist;
+    mylist=createNode();
+    mylist=addNode(mylist,15);
+    
+    mylist=addNode(mylist,16);
+    mylist=addNode(mylist,13);
+    mylist=addNode(mylist,3);
+    mylist=addNode(mylist,123);
+        
+        while(mylist->next!=NULL)
+        {
+           mylist=mylist->next;
+        	printf("%d\n",mylist->Data);
+        
+		}
+	return 0;
+}
