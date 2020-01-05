@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+void factorize(int* number1,int *factors[],int* n1)
+{
+    printf("%d",sizeof(factors));
+
+    for(int i=3;i<*number1;i++)
+    {
+        for(int j=2;j<i;j++)
+        {
+            if(i%j==0)
+            {
+                break;
+            }
+            if(j==i-1)
+            {
+             *(factors + *n1)=i;
+             *n1+=1;
+            }
+        }
+    }
+}
+
+
+int main()
+{
+
+  int sayi=5000;
+  int *factors[sayi];
+  int *n1=0;
+  factorize(&sayi,&factors,&n1);
+  for(int i=0;i<n1;i++)
+  {
+      printf("%d\n",factors[i]);
+  }
+    return 0;
+}
