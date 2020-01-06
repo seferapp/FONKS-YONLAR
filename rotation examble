@@ -1,0 +1,93 @@
+#include <graphics.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <conio.h>
+#include<math.h>
+#include<dos.h>
+#include<string.h>
+#include<iostream>
+#include<ctime>
+#define PI 3.14
+
+typedef struct point_s
+{
+    float x;
+    float y;
+} point_t;
+
+
+
+
+float eucledian(point_t p1,point_t p2)
+{
+    float ret=(p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y);
+    ret=(float)sqrt(ret);
+    //printf("r=%f\n",ret);
+    return ret;
+}
+
+point_t rotate(point_t cp,point_t p,float teta)
+{
+    point_t ret;
+    float r=eucledian(cp,p);
+    ret.x=cp.x+r*cos(teta*PI/180);
+    ret.y=cp.y+r*sin(teta*PI/180);
+    return ret;
+}
+
+int main()
+{
+    /* request auto detection */
+    int gdriver = DETECT, gmode, errorcode;
+    initgraph(&gdriver,&gmode,"d:\\tc\\bgi");
+    setcolor(WHITE);
+    
+    point_t cp;
+    cp.x=75;
+    cp.y=75;
+
+    point_t d[4];
+
+    point_t dizi[4];
+    dizi[0].x=50;
+    dizi[0].y=50;
+    circle(dizi[0].x,dizi[0].y,10);
+
+    dizi[1].x=100;
+    dizi[1].y=50;
+    circle(dizi[1].x,dizi[1].y,10);
+
+    dizi[2].x=100;
+    dizi[2].y=100;
+    circle(dizi[2].x,dizi[2].y,10);
+
+    dizi[3].x=50;
+    dizi[3].y=100;
+    circle(dizi[3].x,dizi[3].y,10);
+
+    setbkcolor(BLACK);
+    for(int i=0; i<360; i++)
+    {
+        cleardevice();
+        for(int j=1; j<=4; j++)
+        {
+            dizi[j-1]=rotate(cp,dizi[j-1],i+(j-1)*90);
+            /*
+            float r=(cp.x-dizi[j].x)*(cp.x-dizi[j].x)+(cp.y-dizi[j].y)*(cp.y-dizi[j].y);
+            r=(float)sqrt(r);
+            printf("j:%d,r=%f\n",j,r);
+            dizi[j].x=cp.x+r*cos(i*((j*PI/2)+PI/180));
+            dizi[j].y=cp.y+r*sin(i*((j*PI/2)+PI/180));
+            */
+
+            //circle(dizi[j].x,dizi[j].y,10);
+            line(dizi[j-1].x,dizi[j-1].y,dizi[j].x,dizi[j].y);
+        }
+        Sleep(10);
+    }
+
+    getch();
+    closegraph();
+    return 0;
+}
